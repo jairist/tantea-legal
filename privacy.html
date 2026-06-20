@@ -70,7 +70,7 @@
   <div class="container">
     <a class="back" href="index.html">← Inicio</a>
     <h1>Política de Privacidad</h1>
-    <p class="updated">Última actualización: 16 de abril de 2026 · <a href="privacy-en.html">English version</a></p>
+    <p class="updated">Última actualización: 20 de junio de 2026 · <a href="privacy-en.html">English version</a></p>
 
     <p>
       Tantea es una app gratuita para llevar el marcador de partidas de dominó.
@@ -78,77 +78,107 @@
       sobre ellos. Hablamos claro y sin jerga legal innecesaria.
     </p>
 
-    <h2>1. Datos que recolectamos</h2>
+    <p>
+      <strong>Lo esencial:</strong> Tantea funciona 100% en tu teléfono sin
+      necesidad de cuenta. Crear un <strong>perfil</strong> es totalmente
+      opcional y sirve para compartir tus partidas entre tus dispositivos y con
+      otros jugadores, y para aparecer en el ranking. Solo si creas un perfil
+      enviamos datos a nuestro servidor.
+    </p>
 
-    <p><strong>En tu dispositivo (nunca salen):</strong></p>
+    <h2>1. Datos en tu dispositivo (sin cuenta)</h2>
+    <p>Si no creas un perfil, estos datos <strong>nunca salen de tu teléfono</strong>:</p>
     <ul>
       <li>Historial de partidas (nombres de equipos, scores, fechas).</li>
       <li>Tus preferencias (tema, sonidos, hápticos, valores de bonificaciones).</li>
       <li>Un identificador anónimo aleatorio del dispositivo (no contiene tu nombre, email, teléfono ni nada identificable).</li>
     </ul>
 
-    <p><strong>Datos que se envían a nuestros servidores:</strong></p>
+    <h2>2. Datos si creas un perfil (opcional)</h2>
+    <p>
+      Al crear tu perfil generamos un identificador único en tu teléfono y
+      registramos en nuestro servidor:
+    </p>
     <ul>
-      <li>
-        <strong>Eventos de uso anónimos</strong> — solo si tienes activado el
-        toggle "Estadísticas anónimas" en Ajustes. Ejemplos: "se inició una
-        partida", "se ganó una partida". Nunca incluyen nombres de equipos ni
-        contenido personal.
-      </li>
+      <li><strong>Tu nombre</strong> (el que escribes para la mesa).</li>
+      <li><strong>Tu correo</strong> — <em>opcional y sin verificar</em>. Solo lo usamos para ayudarte a recuperar tu perfil si cambias de teléfono. Puedes dejarlo en blanco.</li>
+      <li><strong>Tu país</strong> — detectado automáticamente del idioma del teléfono; puedes cambiarlo. Se usa para el ranking nacional.</li>
+      <li><strong>Tu provincia o ciudad</strong> — opcional, la eliges tú. Se usa para el ranking local.</li>
     </ul>
+    <p>
+      Cuando juegas una partida en la que participa al menos un jugador con
+      perfil, el resultado de esa partida (equipos, puntajes, bonificaciones,
+      fecha y país) se <strong>guarda de forma permanente en nuestro servidor</strong>
+      y se reparte a las apps de los jugadores con perfil que participaron. Con
+      esos resultados calculamos las estadísticas y los rankings (nacional, por
+      ciudad y mundial). Las partidas de jugadores <strong>sin perfil</strong>
+      ("Nosotros", "Ellos"…) se quedan solo en el teléfono de quien anota.
+    </p>
+    <div class="note">
+      El código <strong>QR</strong> que compartes contiene únicamente tu
+      identificador y tu nombre. <strong>Nunca</strong> incluye tu correo ni tu
+      ubicación.
+    </div>
 
-    <h2>2. Datos que <em>no</em> recolectamos</h2>
+    <h2>3. Estadísticas de uso anónimas</h2>
+    <p>
+      Solo si tienes activado el toggle "Estadísticas anónimas" en Ajustes
+      enviamos eventos de uso anónimos (ejemplos: "se inició una partida", "se
+      ganó una partida"). Nunca incluyen nombres de equipos ni contenido
+      personal, y no están vinculados a tu perfil.
+    </p>
+
+    <h2>4. Datos que <em>no</em> recolectamos</h2>
     <ul>
-      <li>Tu nombre, email, teléfono o cualquier dato de contacto.</li>
-      <li>Tu ubicación.</li>
+      <li>Tu teléfono u otros datos de contacto (el correo es opcional y lo das tú).</li>
+      <li>Tu ubicación precisa (GPS). El país/ciudad del ranking los defines tú, no rastreamos tu posición.</li>
       <li>Tu lista de contactos o tu galería de fotos.</li>
       <li>Información biométrica.</li>
     </ul>
+    <p>Nunca vendemos tus datos ni los usamos para publicidad de terceros.</p>
 
-    <h2>3. Servicios de terceros</h2>
-
-    <p>Tantea <strong>no usa servicios de terceros</strong> para procesar
-    datos personales. La app funciona 100% localmente.</p>
-
-    <p>En versiones futuras podemos integrar:</p>
+    <h2>5. Dónde viven los datos y servicios de terceros</h2>
+    <p>
+      Los datos de perfil y partidas se guardan en nuestra propia base de datos
+      (<strong>MongoDB Atlas</strong>) a través de nuestro servidor alojado en
+      <strong>Railway</strong>. Son proveedores de infraestructura que almacenan
+      los datos por nosotros; no los usamos para perfilarte ni los compartimos
+      con terceros.
+    </p>
+    <p>En versiones futuras podríamos integrar, avisándote antes en esta política:</p>
     <ul>
-      <li><strong>Procesamiento de fotos por IA</strong> (opcional) — para contar
-      los puntos automáticamente desde una foto. Cuando esta función esté
-      disponible, la foto se enviará a nuestros servidores para ser procesada
-      en memoria y descartada inmediatamente. No se almacenará.</li>
-      <li><strong>Publicidad</strong> — para mantener la app gratuita. Si
-      llegamos a integrar publicidad, te pediremos tu permiso explícito en
-      iOS (App Tracking Transparency) antes de cualquier seguimiento, y
-      actualizaremos esta política con el detalle de la red elegida.</li>
+      <li><strong>Procesamiento de fotos por IA</strong> (opcional) — para contar los puntos desde una foto; la imagen se procesaría en memoria y se descartaría, sin almacenarse.</li>
+      <li><strong>Publicidad</strong> — para mantener la app gratuita; pediremos tu permiso explícito (App Tracking Transparency en iOS) antes de cualquier seguimiento.</li>
     </ul>
 
-    <p>Esta política se actualizará antes de activar cualquiera de estas
-    funciones.</p>
-
-    <h2>4. Tus derechos</h2>
+    <h2>6. Tus derechos</h2>
     <ul>
-      <li><strong>Apagar las estadísticas:</strong> Ajustes → "Estadísticas anónimas" → off.</li>
-      <li><strong>Borrar todos tus datos:</strong> desinstala la app. Como no usas cuenta, no queda nada vinculado a ti.</li>
+      <li><strong>No crear perfil:</strong> toda la app funciona sin cuenta; así nada sale de tu teléfono.</li>
+      <li><strong>Apagar las estadísticas anónimas:</strong> Ajustes → "Estadísticas anónimas" → off.</li>
+      <li><strong>Borrar tu cuenta y todos tus datos del servidor</strong> (perfil, partidas y estadísticas): escríbenos a <a href="mailto:tantea@knowell.tech">tantea@knowell.tech</a> y los eliminamos. La app también incluye/incluirá la opción de borrar tu cuenta directamente.</li>
+      <li><strong>Borrar los datos locales:</strong> desinstala la app.</li>
     </ul>
 
-    <h2>5. Niños</h2>
+    <h2>7. Niños</h2>
     <p>Tantea no está dirigida a menores de 13 años, aunque su contenido es
     apto para todo público. No recolectamos conscientemente datos de menores.
     Si crees que un menor nos envió datos sin permiso de un padre/tutor,
     contáctanos y los eliminaremos.</p>
 
-    <h2>6. Cambios a esta política</h2>
+    <h2>8. Cambios a esta política</h2>
     <p>Si actualizamos esta política de forma material, cambiaremos la fecha
     arriba y, dependiendo del cambio, mostraremos un aviso en la app.</p>
 
-    <h2>7. Contacto</h2>
+    <h2>9. Contacto</h2>
     <p>Para preguntas o solicitudes de privacidad: <a href="mailto:tantea@knowell.tech">tantea@knowell.tech</a></p>
 
     <div class="note">
-      <strong>Resumen rápido:</strong> Tantea es 100% gratis. En esta versión no
-      usamos servicios de terceros para datos personales. Recolectamos lo
-      mínimo (eventos de uso anónimos, si los autorizas) para entender cómo se
-      usa la app. Sin cuentas, sin perfiles, sin venta de datos.
+      <strong>Resumen rápido:</strong> Tantea es 100% gratis y funciona sin
+      cuenta. Si creas un perfil (opcional), guardamos tu nombre, correo
+      opcional, país y ciudad, y las partidas donde participas, para sincronizar
+      con otros jugadores y armar los rankings. El correo y la ubicación nunca
+      van en tu QR. Puedes borrar tu cuenta y todos tus datos cuando quieras.
+      Sin venta de datos.
     </div>
 
     <footer>

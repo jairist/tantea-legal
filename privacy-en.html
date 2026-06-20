@@ -23,99 +23,158 @@
     .container { max-width: 720px; margin: 0 auto; }
     .back { color: var(--text-muted); text-decoration: none; font-size: 14px; }
     .back:hover { color: var(--accent); }
-    h1 { font-size: 32px; font-weight: 800; color: var(--accent); margin: 16px 0 8px; }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 16px 0 8px;
+    }
     .updated { color: var(--text-muted); font-size: 14px; margin-bottom: 32px; }
-    h2 { font-size: 20px; font-weight: 700; color: var(--accent); margin-top: 32px; margin-bottom: 12px; }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
     p { margin-bottom: 16px; color: var(--text); }
     ul { margin: 0 0 16px 24px; }
     li { margin-bottom: 8px; }
     a { color: var(--accent); }
-    .note { background: var(--surface); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 8px; margin: 16px 0; color: var(--text-muted); font-size: 14px; }
-    footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(245, 241, 232, 0.1); color: var(--text-muted); font-size: 13px; text-align: center; }
+    code {
+      background: var(--surface);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+    .note {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 16px 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(245, 241, 232, 0.1);
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <a class="back" href="index.html">← Home</a>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: April 16, 2026 · <a href="privacy.html">Versión en español</a></p>
+    <p class="updated">Last updated: June 20, 2026 · <a href="privacy.html">Versión en español</a></p>
 
     <p>
-      Tantea is a free app for keeping score in dominoes games. This policy
-      explains what data we collect, why, and what control you have. We aim
-      for plain language without legal jargon.
+      Tantea is a free app for keeping score in domino games. This policy
+      explains what data we collect, why, and what control you have over it.
+      Plain language, no unnecessary legalese.
     </p>
 
-    <h2>1. Data we collect</h2>
+    <p>
+      <strong>The essentials:</strong> Tantea works 100% on your phone with no
+      account required. Creating a <strong>profile</strong> is entirely optional
+      and lets you share your games across your devices and with other players,
+      and appear on the leaderboard. We only send data to our server if you
+      create a profile.
+    </p>
 
-    <p><strong>On your device (never leaves):</strong></p>
+    <h2>1. Data on your device (no account)</h2>
+    <p>If you don't create a profile, this data <strong>never leaves your phone</strong>:</p>
     <ul>
       <li>Game history (team names, scores, dates).</li>
       <li>Your preferences (theme, sounds, haptics, bonus values).</li>
-      <li>An anonymous random device identifier (does not contain your name, email, phone, or any identifying info).</li>
+      <li>A random anonymous device identifier (it contains no name, email, phone, or anything identifiable).</li>
     </ul>
 
-    <p><strong>Data sent to our servers:</strong></p>
+    <h2>2. Data if you create a profile (optional)</h2>
+    <p>When you create your profile we generate a unique identifier on your phone and store on our server:</p>
     <ul>
-      <li>
-        <strong>Anonymous usage events</strong> — only if you have the
-        "Anonymous statistics" toggle enabled in Settings. Examples: "a game
-        was started", "a game was won". Never includes team names or
-        personal content.
-      </li>
+      <li><strong>Your name</strong> (the one you use at the table).</li>
+      <li><strong>Your email</strong> — <em>optional and unverified</em>. We only use it to help you recover your profile if you change phones. You can leave it blank.</li>
+      <li><strong>Your country</strong> — auto-detected from your phone's language; you can change it. Used for the national leaderboard.</li>
+      <li><strong>Your province or city</strong> — optional, chosen by you. Used for the local leaderboard.</li>
     </ul>
+    <p>
+      When you play a game in which at least one player has a profile, that
+      game's result (teams, scores, bonuses, date, and country) is
+      <strong>stored permanently on our server</strong> and delivered to the
+      apps of the players-with-profile who took part. We use those results to
+      compute statistics and leaderboards (national, by city, and global). Games
+      with players <strong>without a profile</strong> ("Us", "Them"…) stay only
+      on the scorekeeper's phone.
+    </p>
+    <div class="note">
+      The <strong>QR code</strong> you share contains only your identifier and
+      your name. It <strong>never</strong> includes your email or location.
+    </div>
 
-    <h2>2. Data we do <em>not</em> collect</h2>
+    <h2>3. Anonymous usage statistics</h2>
+    <p>
+      Only if you have the "Anonymous statistics" toggle enabled in Settings do
+      we send anonymous usage events (e.g. "a game started", "a game was won").
+      They never include team names or personal content, and are not tied to
+      your profile.
+    </p>
+
+    <h2>4. Data we do <em>not</em> collect</h2>
     <ul>
-      <li>Your name, email, phone, or any contact info.</li>
-      <li>Your location.</li>
+      <li>Your phone number or other contact info (email is optional and provided by you).</li>
+      <li>Your precise location (GPS). You choose the country/city for the leaderboard; we do not track your position.</li>
       <li>Your contacts list or photo gallery.</li>
       <li>Biometric information.</li>
     </ul>
+    <p>We never sell your data or use it for third-party advertising.</p>
 
-    <h2>3. Third-party services</h2>
-
-    <p>Tantea <strong>does not use third-party services</strong> to process
-    personal data. The app works 100% locally.</p>
-
-    <p>Future versions may integrate:</p>
+    <h2>5. Where data lives & third parties</h2>
+    <p>
+      Profile and game data are stored in our own database
+      (<strong>MongoDB Atlas</strong>) via our server hosted on
+      <strong>Railway</strong>. These are infrastructure providers that store
+      the data on our behalf; we do not use them to profile you nor share your
+      data with third parties.
+    </p>
+    <p>Future versions may integrate, with prior notice in this policy:</p>
     <ul>
-      <li><strong>AI-powered photo counting</strong> (optional) — to count
-      pips automatically from a photo. When this feature is available, the
-      photo will be sent to our servers for in-memory processing and then
-      discarded. It will not be stored.</li>
-      <li><strong>Advertising</strong> — to keep the app free. If we
-      integrate advertising, we will ask for your explicit permission on
-      iOS (App Tracking Transparency) before any tracking, and we will
-      update this policy with details of the chosen network.</li>
+      <li><strong>AI-powered photo counting</strong> (optional) — to count pips from a photo; the image would be processed in memory and discarded, not stored.</li>
+      <li><strong>Advertising</strong> — to keep the app free; we'll ask for your explicit permission (App Tracking Transparency on iOS) before any tracking.</li>
     </ul>
 
-    <p>This policy will be updated before enabling any of these features.</p>
-
-    <h2>4. Your rights</h2>
+    <h2>6. Your rights</h2>
     <ul>
-      <li><strong>Turn off statistics:</strong> Settings → "Anonymous statistics" → off.</li>
-      <li><strong>Delete all your data:</strong> uninstall the app. Since you don't use an account, nothing remains tied to you.</li>
+      <li><strong>Don't create a profile:</strong> the whole app works without an account, so nothing leaves your phone.</li>
+      <li><strong>Turn off anonymous statistics:</strong> Settings → "Anonymous statistics" → off.</li>
+      <li><strong>Delete your account and all your server data</strong> (profile, games, and statistics): email us at <a href="mailto:tantea@knowell.tech">tantea@knowell.tech</a> and we'll erase it. The app also includes/will include an option to delete your account directly.</li>
+      <li><strong>Delete local data:</strong> uninstall the app.</li>
     </ul>
 
-    <h2>5. Children</h2>
+    <h2>7. Children</h2>
     <p>Tantea is not directed at children under 13, although its content is
     suitable for all audiences. We do not knowingly collect data from minors.
     If you believe a minor sent us data without parental consent, contact us
     and we will delete it.</p>
 
-    <h2>6. Changes to this policy</h2>
+    <h2>8. Changes to this policy</h2>
     <p>If we update this policy materially, we'll change the date above and,
     depending on the change, show an in-app notice.</p>
 
-    <h2>7. Contact</h2>
+    <h2>9. Contact</h2>
     <p>For privacy questions or requests: <a href="mailto:tantea@knowell.tech">tantea@knowell.tech</a></p>
 
     <div class="note">
-      <strong>Quick summary:</strong> Tantea is 100% free. In this version we
-      do not use third-party services for personal data. We collect the
-      minimum (anonymous usage events, if you authorize them) to understand
-      how the app is used. No accounts, no profiles, no data selling.
+      <strong>Quick summary:</strong> Tantea is 100% free and works without an
+      account. If you create a profile (optional), we store your name, optional
+      email, country, and city, plus the games you take part in, to sync with
+      other players and build the leaderboards. Email and location never go in
+      your QR. You can delete your account and all your data anytime. No data
+      selling.
     </div>
 
     <footer>
