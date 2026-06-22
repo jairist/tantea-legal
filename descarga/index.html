@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descarga Tantea — Anotador de dominó</title>
+  <meta name="description" content="Tantea: el anotador de dominó dominicano. Lleva tus partidas, tu ranking y tus zapateras. Gratis.">
+  <meta property="og:title" content="Tantea — Anotador de dominó">
+  <meta property="og:description" content="Anota tus partidas, compite en el ranking y presume tus zapateras. Gratis.">
+  <style>
+    :root {
+      --bg: #0F2018;
+      --surface: #1F3A2E;
+      --accent: #D4A24C;
+      --text: #F5F1E8;
+      --text-muted: #9DB5A6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .card {
+      max-width: 420px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: 28px;
+      padding: 40px 28px 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .wordmark {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .tagline { color: var(--text-muted); font-size: 16px; margin-bottom: 28px; }
+    .dominoes { font-size: 34px; letter-spacing: 4px; margin-bottom: 24px; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--accent); color: #0F2018; }
+    .btn-secondary { background: transparent; color: var(--text); border: 1.5px solid rgba(245,241,232,0.25); }
+    .note { color: var(--text-muted); font-size: 13px; margin-top: 18px; line-height: 1.5; }
+    .featured { order: -1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="dominoes" aria-hidden="true">🁫 🀿 🁣</div>
+    <div class="wordmark">Tantea</div>
+    <div class="tagline">Anota tu dominó · gratis</div>
+    <div id="buttons">
+      <a id="ios" class="btn btn-secondary" href="https://apps.apple.com/app/id6762419696">Descargar en App Store</a>
+      <a id="android" class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.jairis.tantea">Descargar en Google Play</a>
+    </div>
+    <p class="note">Lleva tus partidas, compite en el ranking y presume tus zapateras y capicúas.</p>
+  </div>
+  <script>
+    (function () {
+      var ua = navigator.userAgent || navigator.vendor || "";
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      var isAndroid = /Android/.test(ua);
+      var ios = document.getElementById("ios");
+      var android = document.getElementById("android");
+      if (isIOS) {
+        ios.classList.add("btn-primary", "featured");
+        ios.classList.remove("btn-secondary");
+      } else if (isAndroid) {
+        android.classList.add("btn-primary", "featured");
+        android.classList.remove("btn-secondary");
+      } else {
+        ios.classList.add("btn-primary");
+        ios.classList.remove("btn-secondary");
+      }
+    })();
+  </script>
+</body>
+</html>
