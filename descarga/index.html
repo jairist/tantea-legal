@@ -3,79 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Descarga Tantea — Anotador de dominó</title>
-  <meta name="description" content="Tantea: el anotador de dominó dominicano. Lleva tus partidas, tu ranking y tus zapateras. Gratis.">
+  <title>Tantea — Anotador de dominó dominicano · Descarga y manual</title>
+  <meta name="description" content="Tantea: el anotador del dominó dominicano. Anota en dos toques o por voz, compite en el ranking con tu peña y descarga la app para iPhone o Android (APK directo).">
   <meta property="og:title" content="Tantea — Anotador de dominó">
   <meta property="og:description" content="Anota tus partidas, compite en el ranking y presume tus zapateras. Gratis.">
   <style>
     :root {
       --bg: #0F2018;
       --surface: #1F3A2E;
+      --surface-deep: #16291F;
       --accent: #D4A24C;
+      --accent-soft: rgba(212,162,76,0.14);
       --text: #F5F1E8;
       --text-muted: #9DB5A6;
+      --hairline: rgba(245,241,232,0.10);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      text-align: center;
+      line-height: 1.6;
     }
-    .card {
-      max-width: 420px;
-      width: 100%;
-      background: var(--surface);
-      border-radius: 28px;
-      padding: 40px 28px 32px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-    .wordmark {
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-    .tagline { color: var(--text-muted); font-size: 16px; margin-bottom: 28px; }
-    .dominoes { font-size: 34px; letter-spacing: 4px; margin-bottom: 24px; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 60px; }
+    /* ── Hero ── */
+    .hero { text-align: center; padding: 48px 0 28px; }
+    .dominoes { font-size: 36px; letter-spacing: 4px; margin-bottom: 14px; }
+    .wordmark { font-size: 44px; font-weight: 800; letter-spacing: -1px; color: var(--accent); }
+    .tagline { color: var(--text-muted); font-size: 17px; margin: 8px auto 26px; max-width: 460px; }
+    .btns { max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; }
     .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 16px;
-      font-size: 17px;
-      font-weight: 700;
-      text-decoration: none;
-      margin-bottom: 12px;
-      transition: transform 0.1s ease, opacity 0.1s ease;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 16px 20px; border-radius: 16px;
+      font-size: 17px; font-weight: 700; text-decoration: none; margin-bottom: 12px;
+      transition: transform 0.1s ease;
     }
     .btn:active { transform: scale(0.98); }
     .btn-primary { background: var(--accent); color: #0F2018; }
     .btn-secondary { background: transparent; color: var(--text); border: 1.5px solid rgba(245,241,232,0.25); }
-    .note { color: var(--text-muted); font-size: 13px; margin-top: 18px; line-height: 1.5; }
     .featured { order: -1; }
+    .btn small { display: block; font-size: 12px; font-weight: 500; opacity: 0.75; }
+    .hero-note { color: var(--text-muted); font-size: 13px; }
+    /* ── Nav de secciones ── */
+    .nav {
+      position: sticky; top: 0; z-index: 10; background: rgba(15,32,24,0.94);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--hairline);
+      display: flex; gap: 4px; overflow-x: auto; padding: 10px 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav a {
+      color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600;
+      padding: 7px 12px; border-radius: 999px; white-space: nowrap;
+    }
+    .nav a:hover, .nav a:focus { color: var(--accent); background: var(--accent-soft); }
+    /* ── Secciones ── */
+    section { padding-top: 40px; }
+    .eyebrow {
+      display: flex; align-items: center; gap: 12px; color: var(--text-muted);
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .eyebrow::before, .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--hairline); }
+    h2 { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 6px; }
+    .sub { color: var(--text-muted); text-align: center; font-size: 15px; max-width: 520px; margin: 0 auto 24px; }
+    /* ── Cards de funciones ── */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+    .fcard {
+      background: var(--surface-deep); border: 1px solid var(--hairline);
+      border-radius: 18px; padding: 18px 16px;
+    }
+    .fcard .emoji { font-size: 26px; margin-bottom: 8px; display: block; }
+    .fcard h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .fcard p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+    /* ── Tabla de puntos ── */
+    .pts {
+      width: 100%; max-width: 520px; margin: 0 auto 18px; border-collapse: collapse;
+      background: var(--surface-deep); border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--hairline);
+    }
+    .pts th, .pts td { padding: 14px 16px; text-align: left; font-size: 15px; }
+    .pts th { background: var(--surface); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+    .pts tr + tr td { border-top: 1px solid var(--hairline); }
+    .pts .val { text-align: right; font-weight: 800; color: var(--accent); font-size: 18px; white-space: nowrap; }
+    .pts .det { color: var(--text-muted); font-size: 13px; display: block; }
+    .callout {
+      max-width: 520px; margin: 0 auto; background: var(--accent-soft);
+      border: 1px solid rgba(212,162,76,0.35); border-radius: 14px;
+      padding: 14px 16px; font-size: 14px; color: var(--text);
+    }
+    .callout strong { color: var(--accent); }
+    /* ── Acordeones ── */
+    details {
+      background: var(--surface-deep); border: 1px solid var(--hairline);
+      border-radius: 16px; margin-bottom: 10px; overflow: hidden;
+    }
+    summary {
+      cursor: pointer; padding: 16px 18px; font-weight: 700; font-size: 16px;
+      list-style: none; display: flex; align-items: center; gap: 10px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; margin-left: auto; color: var(--accent); font-size: 20px; font-weight: 400; }
+    details[open] summary::after { content: "–"; }
+    .dbody { padding: 0 18px 18px; color: var(--text-muted); font-size: 15px; }
+    .dbody p { margin-bottom: 10px; }
+    .dbody ol, .dbody ul { padding-left: 20px; margin-bottom: 10px; }
+    .dbody li { margin-bottom: 6px; }
+    .dbody .say { color: var(--accent); font-style: italic; }
+    .dbody strong { color: var(--text); }
+    /* ── Footer ── */
+    footer {
+      margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hairline);
+      text-align: center; color: var(--text-muted); font-size: 13px;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="dominoes" aria-hidden="true">🁫 🀿 🁣</div>
-    <div class="wordmark">Tantea</div>
-    <div class="tagline">Anota tu dominó · gratis</div>
-    <div id="buttons">
-      <a id="ios" class="btn btn-secondary" href="https://apps.apple.com/app/id6762419696">Descargar en App Store</a>
-      <a id="android" class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.jairis.tantea">Descargar en Google Play</a>
-    </div>
-    <p class="note">Lleva tus partidas, compite en el ranking y presume tus zapateras y capicúas.</p>
+  <div class="wrap">
+    <header class="hero">
+      <div class="dominoes" aria-hidden="true">🁫 🀿 🁣</div>
+      <div class="wordmark">Tantea</div>
+      <p class="tagline">El anotador del dominó dominicano: anota en dos toques o por voz, lleva el cuaderno en pantalla y compite en el ranking con tu peña. Gratis.</p>
+      <div class="btns" id="buttons">
+        <a id="ios" class="btn btn-secondary" href="https://apps.apple.com/app/id6762419696">
+          <span>Descargar para iPhone<small>App Store</small></span>
+        </a>
+        <a id="android" class="btn btn-secondary" href="https://github.com/jairist/tantea-legal/releases/latest/download/tantea.apk">
+          <span>Descargar para Android<small>APK directo · versión 2.3.0</small></span>
+        </a>
+      </div>
+      <p class="hero-note">Mientras Tantea llega a Google Play, en Android se instala directo con el APK — <a href="#instalar" style="color:var(--accent)">así de fácil</a>.</p>
+    </header>
+
+    <nav class="nav" aria-label="Secciones">
+      <a href="#instalar">Instalar en Android</a>
+      <a href="#funciones">Qué hace</a>
+      <a href="#ranking">Ranking y puntos</a>
+      <a href="#manual">Manual</a>
+    </nav>
+
+    <section id="instalar">
+      <div class="eyebrow">Instalar en Android</div>
+      <h2>Cuatro pasos y a jugar</h2>
+      <p class="sub">Como todavía no estamos en Google Play, la app se instala directo desde el archivo. Es seguro: es el mismo archivo firmado que va para la tienda.</p>
+      <details open>
+        <summary>📲 Pasos de instalación</summary>
+        <div class="dbody">
+          <ol>
+            <li>Toca <strong>"Descargar para Android"</strong> arriba y espera a que baje el archivo <strong>tantea.apk</strong>.</li>
+            <li>Abre el archivo desde las notificaciones o desde la carpeta <strong>Descargas</strong>.</li>
+            <li>Si el teléfono pregunta, activa <strong>"Permitir instalar aplicaciones de esta fuente"</strong> y vuelve atrás.</li>
+            <li>Si Play Protect muestra un aviso, toca <strong>"Más detalles" → "Instalar de todos modos"</strong>. Es normal con apps que aún no están en la tienda.</li>
+          </ol>
+          <p>Las mejoras después llegan solas por internet — no hay que descargar el archivo otra vez. Cuando Tantea salga en Google Play, la tienda la actualiza encima sin perder nada.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="funciones">
+      <div class="eyebrow">Qué hace Tantea</div>
+      <h2>Hecha para la mesa</h2>
+      <p class="sub">Cada función salió de peñas reales jugando con la app en la mano.</p>
+      <div class="grid">
+        <div class="fcard"><span class="emoji">✍️</span><h3>Anota en dos toques</h3><p>Toca el frente, pon los tantos y sigue jugando. El cuaderno completo queda a la vista en cada columna, como en el papel.</p></div>
+        <div class="fcard"><span class="emoji">🎙️</span><h3>Anota con la voz</h3><p>«30 para nosotros», «anótale 25 a Melissa»… y para corregir: «bórrale 10», «quítale eso». Entiende hasta con bulla.</p></div>
+        <div class="fcard"><span class="emoji">🁘</span><h3>Bonos de mesa</h3><p>Salida, pase redondo y capicúa dentro del anotador. Y la regla de casa: con bonos no se domina — solo la capicúa cierra.</p></div>
+        <div class="fcard"><span class="emoji">📡</span><h3>Partida en vivo</h3><p>Los que no anotan la ven en su teléfono en tiempo real, y pueden sugerir tantos que el anotador acepta con un toque.</p></div>
+        <div class="fcard"><span class="emoji">🪪</span><h3>Tu perfil con QR</h3><p>Crea tu perfil una vez y compártelo con el código. Tus números te siguen en cualquier mesa donde te anoten.</p></div>
+        <div class="fcard"><span class="emoji">🏆</span><h3>Ranking real</h3><p>Mundial, de República Dominicana y de tu provincia. Puntos por victorias, capicúas y zapateras. Abajo te explicamos cómo.</p></div>
+        <div class="fcard"><span class="emoji">⚔️</span><h3>Comparador</h3><p>Tú contra quien sea, cara a cara: quién va arriba en cada número y quién domina el duelo.</p></div>
+        <div class="fcard"><span class="emoji">📖</span><h3>Historial con auditoría</h3><p>Cada partida guarda todas sus manos. Se puede revisar, corregir y hasta deshacer una victoria mal cantada.</p></div>
+        <div class="fcard"><span class="emoji">🎉</span><h3>Presume la victoria</h3><p>Tarjeta lista para el estado de WhatsApp con el titular, el marcador y la serie.</p></div>
+        <div class="fcard"><span class="emoji">🌎</span><h3>Temas de país</h3><p>RD, PR, Cuba, México, España, Brasil y más — gratis, para que la mesa se vista de tu bandera.</p></div>
+      </div>
+    </section>
+
+    <section id="ranking">
+      <div class="eyebrow">Lo principal</div>
+      <h2>El ranking y los puntos</h2>
+      <p class="sub">Así se suman los puntos de liga. La fórmula es la misma para todo el mundo y la app la aplica sola — nadie cuadra nada a mano.</p>
+      <table class="pts">
+        <tr><th>Jugada</th><th style="text-align:right">Puntos</th></tr>
+        <tr><td><strong>Victoria</strong><span class="det">Ganar la partida</span></td><td class="val">+3</td></tr>
+        <tr><td><strong>Capicúa</strong><span class="det">Cada una que haga tu frente, ganes o pierdas la partida</span></td><td class="val">+1</td></tr>
+        <tr><td><strong>Zapatera</strong><span class="det">Ganas y el mejor rival no llegó ni a 30 (en Puerto Rico, 25)</span></td><td class="val">+1</td></tr>
+        <tr><td><strong>Liza</strong><span class="det">Ganas y el rival se quedó en CERO — la humillación completa</span></td><td class="val">+1</td></tr>
+      </table>
+      <div class="callout">
+        <strong>Para que una partida cuente en el ranking:</strong> tiene que estar <strong>terminada</strong> (alguien llegó a la meta) y los jugadores deben tener su <strong>perfil</strong> puesto en los frentes. Las partidas se registran desde el teléfono del que anota — y si después se corrige una mano, el ranking se corrige también. Hay tres tablas: <strong>mundial</strong>, <strong>tu país</strong> y <strong>tu provincia</strong>; en tu perfil además ves tus percentiles contra toda la comunidad.
+      </div>
+    </section>
+
+    <section id="manual">
+      <div class="eyebrow">Manual rápido</div>
+      <h2>De cero a anotador</h2>
+      <p class="sub">Cinco minutos y quedas mejor que el tío que siempre lleva el papelito.</p>
+      <details>
+        <summary>🪑 Armar la mesa</summary>
+        <div class="dbody">
+          <p>Toca la pastilla de arriba a la izquierda (meta y modo) para configurar: <strong>parejas</strong> o <strong>individual</strong> (2, 3 o 4 marcadores) y la meta (200 es lo clásico).</p>
+          <p>Ponle nombre a los frentes o vincula los <strong>perfiles</strong> de los jugadores — así la partida cuenta para el ranking. Mantén presionado un frente para editarlo.</p>
+        </div>
+      </details>
+      <details>
+        <summary>✍️ Anotar tantos y bonos</summary>
+        <div class="dbody">
+          <p>Toca la columna del frente que ganó la mano → se abre el anotador: escribe los tantos y, si aplica, marca ahí mismo <strong>salida</strong>, <strong>pase redondo</strong> o <strong>capicúa</strong>. La salida vuelve a estar disponible en cada mano.</p>
+          <p>Por voz: mantén presionado el micrófono y di <span class="say">«30 para nosotros»</span>, <span class="say">«anótale 25 a Melissa»</span>, <span class="say">«capicúa para ellos»</span>.</p>
+        </div>
+      </details>
+      <details>
+        <summary>🔧 Corregir sin pelea</summary>
+        <div class="dbody">
+          <ul>
+            <li><strong>Mantén presionado</strong> un tanto en la columna para corregir esa entrada.</li>
+            <li>Por voz: <span class="say">«bórrale 10 a Melissa»</span> (corrige la última entrada), <span class="say">«bórrale eso»</span> (la elimina), <span class="say">«tumba eso»</span> (deshacer).</li>
+            <li>El botón <strong>auditar</strong> muestra todas las manos de la partida para revisarlas.</li>
+            <li>¿Se cantó victoria por error? En la pantalla de victoria: <strong>«Volver a la partida»</strong> borra la mano que cruzó la meta y siguen jugando — nada falso llega al ranking.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>🪪 Jugar con tu peña (perfiles y QR)</summary>
+        <div class="dbody">
+          <p>En Ajustes crea tu perfil con tu nombre y provincia. Tu <strong>código QR</strong> vive ahí mismo: muéstralo y que te escaneen desde el botón de escanear (en el marcador o en Ajustes) — quedas en el roster de esa persona para siempre.</p>
+          <p>Cuando te anoten en cualquier teléfono con tu perfil puesto, esa partida suma a TU ranking.</p>
+        </div>
+      </details>
+      <details>
+        <summary>📡 Ver la partida en vivo y sugerir tantos</summary>
+        <div class="dbody">
+          <p>Si estás jugando pero no eres el que anota, abre Tantea: te sale el aviso <strong>«Te están anotando»</strong> — tócalo y ves el marcador en tiempo real, con todas las manos.</p>
+          <p>¿El anotador está lento? Toca <strong>«Sugerir tantos»</strong>, pon el frente y la cantidad, y al anotador le llega para aceptarla con un toque. La autoridad sigue siendo del que anota — como en la mesa.</p>
+        </div>
+      </details>
+    </section>
+
+    <footer>
+      <p>Tantea es gratis y hecha en República Dominicana 🇩🇴</p>
+      <p style="margin-top:8px"><a href="../privacy.html">Privacidad</a> · <a href="../terms.html">Términos</a></p>
+    </footer>
   </div>
+
   <script>
     (function () {
       var ua = navigator.userAgent || navigator.vendor || "";
@@ -90,8 +261,8 @@
         android.classList.add("btn-primary", "featured");
         android.classList.remove("btn-secondary");
       } else {
-        ios.classList.add("btn-primary");
-        ios.classList.remove("btn-secondary");
+        android.classList.add("btn-primary");
+        android.classList.remove("btn-secondary");
       }
     })();
   </script>
