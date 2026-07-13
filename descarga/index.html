@@ -5,139 +5,266 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tantea — Anotador de dominó dominicano · Descarga y manual</title>
   <meta name="description" content="Tantea: el anotador del dominó dominicano. Anota en dos toques o por voz, compite en el ranking con tu peña y descarga la app para iPhone o Android (APK directo).">
+  <meta name="theme-color" content="#0F2018">
   <meta property="og:title" content="Tantea — Anotador de dominó">
   <meta property="og:description" content="Anota tus partidas, compite en el ranking y presume tus zapateras. Gratis.">
+  <meta property="og:image" content="https://jairist.github.io/tantea-legal/assets/tantea-icon.png">
+  <meta property="og:url" content="https://jairist.github.io/tantea-legal/descarga/">
+  <link rel="icon" type="image/png" href="../assets/tantea-icon-96.png">
+  <link rel="apple-touch-icon" href="../assets/tantea-icon.png">
   <style>
     :root {
       --bg: #0F2018;
-      --surface: #1F3A2E;
+      --surface: #1C3327;
       --surface-deep: #16291F;
       --accent: #D4A24C;
       --accent-soft: rgba(212,162,76,0.14);
+      --accent-line: rgba(212,162,76,0.32);
       --text: #F5F1E8;
       --text-muted: #9DB5A6;
       --hairline: rgba(245,241,232,0.10);
+      --ink: #0F2018;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 60px; }
+    ::selection { background: rgba(212,162,76,0.30); }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 64px; }
+    a:focus-visible, summary:focus-visible, .btn:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px;
+    }
+    /* ── Iconos (Lucide inline) ── */
+    .icon { display: block; flex: none; }
+    .icon-box {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 13px;
+      background: var(--accent-soft); border: 1px solid rgba(212,162,76,0.22);
+      color: var(--accent);
+    }
+    .icon-box .icon { width: 22px; height: 22px; }
+    .icon-box.sm { width: 36px; height: 36px; border-radius: 11px; }
+    .icon-box.sm .icon { width: 18px; height: 18px; }
     /* ── Hero ── */
-    .hero { text-align: center; padding: 48px 0 28px; }
-    .dominoes { font-size: 36px; letter-spacing: 4px; margin-bottom: 14px; }
-    .wordmark { font-size: 44px; font-weight: 800; letter-spacing: -1px; color: var(--accent); }
-    .tagline { color: var(--text-muted); font-size: 17px; margin: 8px auto 26px; max-width: 460px; }
+    .hero { position: relative; text-align: center; padding: 56px 0 30px; scroll-margin-top: 72px; }
+    .hero::before {
+      content: ""; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+      width: 100%; max-width: 480px; height: 340px;
+      background: radial-gradient(closest-side, rgba(212,162,76,0.16), transparent 72%);
+      pointer-events: none; z-index: -1;
+    }
+    .app-icon {
+      width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto;
+      box-shadow:
+        0 0 0 1px rgba(212,162,76,0.45),
+        0 0 0 7px rgba(212,162,76,0.08),
+        0 20px 44px rgba(0,0,0,0.50);
+    }
+    .wordmark { font-size: 40px; font-weight: 800; letter-spacing: -1px; line-height: 1.15; color: var(--accent); margin-top: 20px; }
+    .tagline { color: var(--text-muted); font-size: 17px; margin: 10px auto 28px; max-width: 460px; }
     .btns { max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; }
     .btn {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      width: 100%; padding: 16px 20px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; min-height: 58px; padding: 12px 20px; border-radius: 16px;
       font-size: 17px; font-weight: 700; text-decoration: none; margin-bottom: 12px;
-      transition: transform 0.1s ease;
+      transition: transform 0.12s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
     }
+    .btn .icon { width: 21px; height: 21px; }
+    .btn span { text-align: left; }
+    .btn small { display: block; font-size: 12px; font-weight: 500; opacity: 0.75; line-height: 1.35; }
     .btn:active { transform: scale(0.98); }
-    .btn-primary { background: var(--accent); color: #0F2018; }
-    .btn-secondary { background: transparent; color: var(--text); border: 1.5px solid rgba(245,241,232,0.25); }
+    .btn-primary { background: var(--accent); color: var(--ink); box-shadow: 0 10px 28px rgba(212,162,76,0.22); }
+    .btn-primary:hover { background: #DEB05F; }
+    .btn-secondary { background: transparent; color: var(--text); border: 1.5px solid rgba(245,241,232,0.22); }
+    .btn-secondary:hover { border-color: var(--accent-line); background: var(--accent-soft); }
+    .btn-secondary .icon { color: var(--accent); }
     .featured { order: -1; }
-    .btn small { display: block; font-size: 12px; font-weight: 500; opacity: 0.75; }
-    .hero-note { color: var(--text-muted); font-size: 13px; }
+    .hero-note { color: var(--text-muted); font-size: 13px; max-width: 420px; margin: 2px auto 0; }
+    .hero-note a { color: var(--accent); }
     /* ── Nav de secciones ── */
     .nav {
-      position: sticky; top: 0; z-index: 10; background: rgba(15,32,24,0.94);
-      backdrop-filter: blur(8px); border-bottom: 1px solid var(--hairline);
-      display: flex; gap: 4px; overflow-x: auto; padding: 10px 16px;
-      -webkit-overflow-scrolling: touch;
+      position: sticky; top: 0; z-index: 10; margin: 0 -20px;
+      background: rgba(15,32,24,0.88);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--hairline);
+      display: flex; gap: 4px; overflow-x: auto; padding: 6px 16px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
     }
+    .nav::-webkit-scrollbar { display: none; }
     .nav a {
+      display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
       color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600;
-      padding: 7px 12px; border-radius: 999px; white-space: nowrap;
+      border-radius: 999px; white-space: nowrap;
+      transition: color 0.15s ease, background-color 0.15s ease;
     }
-    .nav a:hover, .nav a:focus { color: var(--accent); background: var(--accent-soft); }
+    .nav a:hover, .nav a:focus-visible { color: var(--accent); background: var(--accent-soft); }
+    .nav a.cta { color: var(--accent); font-weight: 700; }
     /* ── Secciones ── */
-    section { padding-top: 40px; }
+    section { padding-top: 56px; scroll-margin-top: 72px; }
     .eyebrow {
       display: flex; align-items: center; gap: 12px; color: var(--text-muted);
       font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
       margin-bottom: 18px;
     }
     .eyebrow::before, .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--hairline); }
-    h2 { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 6px; }
-    .sub { color: var(--text-muted); text-align: center; font-size: 15px; max-width: 520px; margin: 0 auto 24px; }
+    h2 { font-size: 27px; font-weight: 800; letter-spacing: -0.4px; line-height: 1.25; text-align: center; margin-bottom: 8px; }
+    .sub { color: var(--text-muted); text-align: center; font-size: 15px; max-width: 520px; margin: 0 auto 26px; }
     /* ── Cards de funciones ── */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
     .fcard {
       background: var(--surface-deep); border: 1px solid var(--hairline);
-      border-radius: 18px; padding: 18px 16px;
+      border-radius: 18px; padding: 20px 16px 18px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .fcard .emoji { font-size: 26px; margin-bottom: 8px; display: block; }
+    .fcard .icon-box { margin-bottom: 12px; }
     .fcard h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    .fcard p { color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+    .fcard p { color: var(--text-muted); font-size: 14px; line-height: 1.55; }
+    @media (hover: hover) {
+      .fcard:hover { border-color: var(--accent-line); transform: translateY(-2px); }
+    }
     /* ── Tabla de puntos ── */
     .pts {
-      width: 100%; max-width: 520px; margin: 0 auto 18px; border-collapse: collapse;
-      background: var(--surface-deep); border-radius: 18px; overflow: hidden;
-      border: 1px solid var(--hairline);
+      width: 100%; max-width: 560px; margin: 0 auto 16px;
+      border-collapse: separate; border-spacing: 0;
+      background: var(--surface-deep); border: 1px solid var(--hairline);
+      border-radius: 20px; overflow: hidden;
     }
-    .pts th, .pts td { padding: 14px 16px; text-align: left; font-size: 15px; }
-    .pts th { background: var(--surface); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
-    .pts tr + tr td { border-top: 1px solid var(--hairline); }
-    .pts .val { text-align: right; font-weight: 800; color: var(--accent); font-size: 18px; white-space: nowrap; }
-    .pts .det { color: var(--text-muted); font-size: 13px; display: block; }
+    .pts th {
+      background: var(--surface); padding: 12px 18px; text-align: left;
+      font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 700;
+    }
+    .pts th.num { text-align: right; }
+    .pts td { padding: 14px 18px; vertical-align: middle; }
+    .pts tbody tr + tr td { border-top: 1px solid var(--hairline); }
+    .play { display: flex; align-items: center; gap: 12px; }
+    .play strong { display: block; font-size: 16px; line-height: 1.3; }
+    .det { color: var(--text-muted); font-size: 13px; display: block; line-height: 1.45; margin-top: 2px; }
+    .pts td.val { text-align: right; white-space: nowrap; padding-left: 8px; }
+    .badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 48px; padding: 5px 12px; border-radius: 999px;
+      background: var(--accent); color: var(--ink);
+      font-weight: 800; font-size: 15px; letter-spacing: 0.2px;
+    }
     .callout {
-      max-width: 520px; margin: 0 auto; background: var(--accent-soft);
-      border: 1px solid rgba(212,162,76,0.35); border-radius: 14px;
-      padding: 14px 16px; font-size: 14px; color: var(--text);
+      max-width: 560px; margin: 0 auto; background: var(--accent-soft);
+      border: 1px solid var(--accent-line); border-radius: 16px;
+      padding: 16px; font-size: 14px; color: var(--text); line-height: 1.55;
+      display: flex; gap: 12px; align-items: flex-start;
     }
+    .callout .icon { width: 18px; height: 18px; color: var(--accent); margin-top: 2px; }
     .callout strong { color: var(--accent); }
     /* ── Acordeones ── */
     details {
       background: var(--surface-deep); border: 1px solid var(--hairline);
       border-radius: 16px; margin-bottom: 10px; overflow: hidden;
+      transition: border-color 0.2s ease;
     }
+    details[open] { border-color: rgba(212,162,76,0.25); }
     summary {
-      cursor: pointer; padding: 16px 18px; font-weight: 700; font-size: 16px;
-      list-style: none; display: flex; align-items: center; gap: 10px;
+      cursor: pointer; padding: 15px 16px 15px 18px; min-height: 56px;
+      font-weight: 700; font-size: 16px; list-style: none;
+      display: flex; align-items: center; gap: 12px;
+      -webkit-tap-highlight-color: transparent;
     }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; margin-left: auto; color: var(--accent); font-size: 20px; font-weight: 400; }
-    details[open] summary::after { content: "–"; }
-    .dbody { padding: 0 18px 18px; color: var(--text-muted); font-size: 15px; }
+    summary .icon { width: 18px; height: 18px; color: var(--accent); }
+    .chev { margin-left: auto; color: var(--text-muted); transition: transform 0.25s ease; }
+    summary .chev { width: 20px; height: 20px; }
+    details[open] .chev { transform: rotate(180deg); color: var(--accent); }
+    details[open] summary { border-bottom: 1px solid var(--hairline); }
+    .dbody { padding: 14px 18px 18px; color: var(--text-muted); font-size: 15px; }
     .dbody p { margin-bottom: 10px; }
-    .dbody ol, .dbody ul { padding-left: 20px; margin-bottom: 10px; }
-    .dbody li { margin-bottom: 6px; }
+    .dbody p:last-child { margin-bottom: 0; }
+    .dbody ul { padding-left: 20px; margin-bottom: 10px; }
+    .dbody li { margin-bottom: 8px; }
     .dbody .say { color: var(--accent); font-style: italic; }
     .dbody strong { color: var(--text); }
+    .steps { list-style: none; counter-reset: paso; margin-bottom: 12px; }
+    .steps li { counter-increment: paso; position: relative; padding-left: 38px; margin-bottom: 12px; }
+    .steps li::before {
+      content: counter(paso);
+      position: absolute; left: 0; top: 0; width: 26px; height: 26px;
+      border-radius: 999px; background: var(--accent-soft);
+      border: 1px solid var(--accent-line); color: var(--accent);
+      font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+    }
     /* ── Footer ── */
     footer {
-      margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hairline);
+      margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--hairline);
       text-align: center; color: var(--text-muted); font-size: 13px;
     }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--accent); }
+    footer .icon { width: 13px; height: 13px; color: var(--accent); display: inline-block; vertical-align: -2px; }
+    footer a { color: var(--text-muted); transition: color 0.15s ease; }
+    footer a:hover, footer a:focus-visible { color: var(--accent); }
+    /* ── Desktop ── */
+    @media (min-width: 640px) {
+      .hero { padding-top: 64px; }
+      .wordmark { font-size: 44px; }
+      h2 { font-size: 30px; }
+      section { padding-top: 64px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
   </style>
 </head>
 <body>
+  <!-- Sprite de iconos Lucide (geometría referenciada con <use>) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+      <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+      <symbol id="i-dice" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M16 8h.01"/><path d="M8 8h.01"/><path d="M8 16h.01"/><path d="M16 16h.01"/><path d="M12 12h.01"/></symbol>
+      <symbol id="i-radio" viewBox="0 0 24 24"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></symbol>
+      <symbol id="i-qr" viewBox="0 0 24 24"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+      <symbol id="i-swords" viewBox="0 0 24 24"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 10"/><line x1="5" x2="9" y1="14" y2="18"/><line x1="7" x2="4" y1="17" y2="20"/><line x1="3" x2="5" y1="19" y2="21"/></symbol>
+      <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+      <symbol id="i-idcard" viewBox="0 0 24 24"><path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></symbol>
+      <symbol id="i-swap" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol>
+      <symbol id="i-foot" viewBox="0 0 24 24"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></symbol>
+      <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+    </defs>
+  </svg>
+
   <div class="wrap">
-    <header class="hero">
-      <div class="dominoes" aria-hidden="true">🁫 🀿 🁣</div>
-      <div class="wordmark">Tantea</div>
+    <header class="hero" id="descargar">
+      <img class="app-icon" src="../assets/tantea-icon.png" alt="Logo de Tantea" width="112" height="112">
+      <h1 class="wordmark">Tantea</h1>
       <p class="tagline">El anotador del dominó dominicano: anota en dos toques o por voz, lleva el cuaderno en pantalla y compite en el ranking con tu peña. Gratis.</p>
       <div class="btns" id="buttons">
         <a id="ios" class="btn btn-secondary" href="https://apps.apple.com/app/id6762419696">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-apple"/></svg>
           <span>Descargar para iPhone<small>App Store</small></span>
         </a>
         <a id="android" class="btn btn-secondary" href="https://github.com/jairist/tantea-legal/releases/latest/download/tantea.apk">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-download"/></svg>
           <span>Descargar para Android<small>APK directo · versión 2.3.0</small></span>
         </a>
       </div>
-      <p class="hero-note">Mientras Tantea llega a Google Play, en Android se instala directo con el APK — <a href="#instalar" style="color:var(--accent)">así de fácil</a>.</p>
+      <p class="hero-note">Mientras Tantea llega a Google Play, en Android se instala directo con el APK — <a href="#instalar">así de fácil</a>.</p>
     </header>
 
     <nav class="nav" aria-label="Secciones">
+      <a class="cta" href="#descargar">Descargar</a>
       <a href="#instalar">Instalar en Android</a>
       <a href="#funciones">Qué hace</a>
       <a href="#ranking">Ranking y puntos</a>
@@ -149,9 +276,13 @@
       <h2>Cuatro pasos y a jugar</h2>
       <p class="sub">Como todavía no estamos en Google Play, la app se instala directo desde el archivo. Es seguro: es el mismo archivo firmado que va para la tienda.</p>
       <details open>
-        <summary>📲 Pasos de instalación</summary>
+        <summary>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-download"/></svg>
+          Pasos de instalación
+          <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
         <div class="dbody">
-          <ol>
+          <ol class="steps">
             <li>Toca <strong>"Descargar para Android"</strong> arriba y espera a que baje el archivo <strong>tantea.apk</strong>.</li>
             <li>Abre el archivo desde las notificaciones o desde la carpeta <strong>Descargas</strong>.</li>
             <li>Si el teléfono pregunta, activa <strong>"Permitir instalar aplicaciones de esta fuente"</strong> y vuelve atrás.</li>
@@ -167,16 +298,46 @@
       <h2>Hecha para la mesa</h2>
       <p class="sub">Cada función salió de peñas reales jugando con la app en la mano.</p>
       <div class="grid">
-        <div class="fcard"><span class="emoji">✍️</span><h3>Anota en dos toques</h3><p>Toca el frente, pon los tantos y sigue jugando. El cuaderno completo queda a la vista en cada columna, como en el papel.</p></div>
-        <div class="fcard"><span class="emoji">🎙️</span><h3>Anota con la voz</h3><p>«30 para nosotros», «anótale 25 a Melissa»… y para corregir: «bórrale 10», «quítale eso». Entiende hasta con bulla.</p></div>
-        <div class="fcard"><span class="emoji">🁘</span><h3>Bonos de mesa</h3><p>Salida, pase redondo y capicúa dentro del anotador. Y la regla de casa: con bonos no se domina — solo la capicúa cierra.</p></div>
-        <div class="fcard"><span class="emoji">📡</span><h3>Partida en vivo</h3><p>Los que no anotan la ven en su teléfono en tiempo real, y pueden sugerir tantos que el anotador acepta con un toque.</p></div>
-        <div class="fcard"><span class="emoji">🪪</span><h3>Tu perfil con QR</h3><p>Crea tu perfil una vez y compártelo con el código. Tus números te siguen en cualquier mesa donde te anoten.</p></div>
-        <div class="fcard"><span class="emoji">🏆</span><h3>Ranking real</h3><p>Mundial, de República Dominicana y de tu provincia. Puntos por victorias, capicúas y zapateras. Abajo te explicamos cómo.</p></div>
-        <div class="fcard"><span class="emoji">⚔️</span><h3>Comparador</h3><p>Tú contra quien sea, cara a cara: quién va arriba en cada número y quién domina el duelo.</p></div>
-        <div class="fcard"><span class="emoji">📖</span><h3>Historial con auditoría</h3><p>Cada partida guarda todas sus manos. Se puede revisar, corregir y hasta deshacer una victoria mal cantada.</p></div>
-        <div class="fcard"><span class="emoji">🎉</span><h3>Presume la victoria</h3><p>Tarjeta lista para el estado de WhatsApp con el titular, el marcador y la serie.</p></div>
-        <div class="fcard"><span class="emoji">🌎</span><h3>Temas de país</h3><p>RD, PR, Cuba, México, España, Brasil y más — gratis, para que la mesa se vista de tu bandera.</p></div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pencil"/></svg></span>
+          <h3>Anota en dos toques</h3><p>Toca el frente, pon los tantos y sigue jugando. El cuaderno completo queda a la vista en cada columna, como en el papel.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mic"/></svg></span>
+          <h3>Anota con la voz</h3><p>«30 para nosotros», «anótale 25 a Melissa»… y para corregir: «bórrale 10», «quítale eso». Entiende hasta con bulla.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-dice"/></svg></span>
+          <h3>Bonos de mesa</h3><p>Salida, pase redondo y capicúa dentro del anotador. Y la regla de casa: con bonos no se domina — solo la capicúa cierra.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-radio"/></svg></span>
+          <h3>Partida en vivo</h3><p>Los que no anotan la ven en su teléfono en tiempo real, y pueden sugerir tantos que el anotador acepta con un toque.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-qr"/></svg></span>
+          <h3>Tu perfil con QR</h3><p>Crea tu perfil una vez y compártelo con el código. Tus números te siguen en cualquier mesa donde te anoten.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-trophy"/></svg></span>
+          <h3>Ranking real</h3><p>Mundial, de República Dominicana y de tu provincia. Puntos por victorias, capicúas y zapateras. Abajo te explicamos cómo.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-swords"/></svg></span>
+          <h3>Comparador</h3><p>Tú contra quien sea, cara a cara: quién va arriba en cada número y quién domina el duelo.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-history"/></svg></span>
+          <h3>Historial con auditoría</h3><p>Cada partida guarda todas sus manos. Se puede revisar, corregir y hasta deshacer una victoria mal cantada.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-sparkles"/></svg></span>
+          <h3>Presume la victoria</h3><p>Tarjeta lista para el estado de WhatsApp con el titular, el marcador y la serie.</p>
+        </div>
+        <div class="fcard">
+          <span class="icon-box" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-globe"/></svg></span>
+          <h3>Temas de país</h3><p>RD, PR, Cuba, México, España, Brasil y más — gratis, para que la mesa se vista de tu bandera.</p>
+        </div>
       </div>
     </section>
 
@@ -185,14 +346,53 @@
       <h2>El ranking y los puntos</h2>
       <p class="sub">Así se suman los puntos de liga. La fórmula es la misma para todo el mundo y la app la aplica sola — nadie cuadra nada a mano.</p>
       <table class="pts">
-        <tr><th>Jugada</th><th style="text-align:right">Puntos</th></tr>
-        <tr><td><strong>Victoria</strong><span class="det">Ganar la partida</span></td><td class="val">+3</td></tr>
-        <tr><td><strong>Capicúa</strong><span class="det">Cada una que haga tu frente, ganes o pierdas la partida</span></td><td class="val">+1</td></tr>
-        <tr><td><strong>Zapatera</strong><span class="det">Ganas y el mejor rival no llegó ni a 30 (en Puerto Rico, 25)</span></td><td class="val">+1</td></tr>
-        <tr><td><strong>Liza</strong><span class="det">Ganas y el rival se quedó en CERO — la humillación completa</span></td><td class="val">+2</td></tr>
+        <thead>
+          <tr><th scope="col">Jugada</th><th scope="col" class="num">Puntos</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="play">
+                <span class="icon-box sm" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-trophy"/></svg></span>
+                <div><strong>Victoria</strong><span class="det">Ganar la partida</span></div>
+              </div>
+            </td>
+            <td class="val"><span class="badge">+3</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="play">
+                <span class="icon-box sm" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-swap"/></svg></span>
+                <div><strong>Capicúa</strong><span class="det">Cada una que haga tu frente, ganes o pierdas la partida</span></div>
+              </div>
+            </td>
+            <td class="val"><span class="badge">+1</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="play">
+                <span class="icon-box sm" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-foot"/></svg></span>
+                <div><strong>Zapatera</strong><span class="det">Ganas y el mejor rival no llegó ni a 30 (en Puerto Rico, 25)</span></div>
+              </div>
+            </td>
+            <td class="val"><span class="badge">+1</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="play">
+                <span class="icon-box sm" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-ban"/></svg></span>
+                <div><strong>Liza</strong><span class="det">Ganas y el rival se quedó en CERO — la humillación completa</span></div>
+              </div>
+            </td>
+            <td class="val"><span class="badge">+2</span></td>
+          </tr>
+        </tbody>
       </table>
       <div class="callout">
-        <strong>Para que una partida cuente en el ranking:</strong> tiene que estar <strong>terminada</strong> (alguien llegó a la meta) y los jugadores deben tener su <strong>perfil</strong> puesto en los frentes. Las partidas se registran desde el teléfono del que anota — y si después se corrige una mano, el ranking se corrige también. Hay tres tablas: <strong>mundial</strong>, <strong>tu país</strong> y <strong>tu provincia</strong>; en tu perfil además ves tus percentiles contra toda la comunidad.
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-info"/></svg>
+        <div>
+          <strong>Para que una partida cuente en el ranking:</strong> tiene que estar <strong>terminada</strong> (alguien llegó a la meta) y los jugadores deben tener su <strong>perfil</strong> puesto en los frentes. Las partidas se registran desde el teléfono del que anota — y si después se corrige una mano, el ranking se corrige también. Hay tres tablas: <strong>mundial</strong>, <strong>tu país</strong> y <strong>tu provincia</strong>; en tu perfil además ves tus percentiles contra toda la comunidad.
+        </div>
       </div>
     </section>
 
@@ -201,21 +401,33 @@
       <h2>De cero a anotador</h2>
       <p class="sub">Cinco minutos y quedas mejor que el tío que siempre lleva el papelito.</p>
       <details>
-        <summary>🪑 Armar la mesa</summary>
+        <summary>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-users"/></svg>
+          Armar la mesa
+          <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
         <div class="dbody">
           <p>Toca la pastilla de arriba a la izquierda (meta y modo) para configurar: <strong>parejas</strong> o <strong>individual</strong> (2, 3 o 4 marcadores) y la meta (200 es lo clásico).</p>
           <p>Ponle nombre a los frentes o vincula los <strong>perfiles</strong> de los jugadores — así la partida cuenta para el ranking. Mantén presionado un frente para editarlo.</p>
         </div>
       </details>
       <details>
-        <summary>✍️ Anotar tantos y bonos</summary>
+        <summary>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-pencil"/></svg>
+          Anotar tantos y bonos
+          <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
         <div class="dbody">
           <p>Toca la columna del frente que ganó la mano → se abre el anotador: escribe los tantos y, si aplica, marca ahí mismo <strong>salida</strong>, <strong>pase redondo</strong> o <strong>capicúa</strong>. La salida vuelve a estar disponible en cada mano.</p>
           <p>Por voz: mantén presionado el micrófono y di <span class="say">«30 para nosotros»</span>, <span class="say">«anótale 25 a Melissa»</span>, <span class="say">«capicúa para ellos»</span>.</p>
         </div>
       </details>
       <details>
-        <summary>🔧 Corregir sin pelea</summary>
+        <summary>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-wrench"/></svg>
+          Corregir sin pelea
+          <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
         <div class="dbody">
           <ul>
             <li><strong>Mantén presionado</strong> un tanto en la columna para corregir esa entrada.</li>
@@ -226,14 +438,22 @@
         </div>
       </details>
       <details>
-        <summary>🪪 Jugar con tu peña (perfiles y QR)</summary>
+        <summary>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-idcard"/></svg>
+          Jugar con tu peña (perfiles y QR)
+          <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
         <div class="dbody">
           <p>En Ajustes crea tu perfil con tu nombre y provincia. Tu <strong>código QR</strong> vive ahí mismo: muéstralo y que te escaneen desde el botón de escanear (en el marcador o en Ajustes) — quedas en el roster de esa persona para siempre.</p>
           <p>Cuando te anoten en cualquier teléfono con tu perfil puesto, esa partida suma a TU ranking.</p>
         </div>
       </details>
       <details>
-        <summary>📡 Ver la partida en vivo y sugerir tantos</summary>
+        <summary>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-radio"/></svg>
+          Ver la partida en vivo y sugerir tantos
+          <svg class="icon chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chev"/></svg>
+        </summary>
         <div class="dbody">
           <p>Si estás jugando pero no eres el que anota, abre Tantea: te sale el aviso <strong>«Te están anotando»</strong> — tócalo y ves el marcador en tiempo real, con todas las manos.</p>
           <p>¿El anotador está lento? Toca <strong>«Sugerir tantos»</strong>, pon el frente y la cantidad, y al anotador le llega para aceptarla con un toque. La autoridad sigue siendo del que anota — como en la mesa.</p>
@@ -242,7 +462,7 @@
     </section>
 
     <footer>
-      <p>Tantea es gratis y hecha en República Dominicana 🇩🇴</p>
+      <p>Tantea es gratis y está hecha con <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" role="img"><use href="#i-heart"/></svg> en República Dominicana.</p>
       <p style="margin-top:8px"><a href="../privacy.html">Privacidad</a> · <a href="../terms.html">Términos</a></p>
     </footer>
   </div>
