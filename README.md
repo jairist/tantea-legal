@@ -8,6 +8,7 @@ Servidos vía GitHub Pages en:
 - 📜 https://jairist.github.io/tantea-legal/privacy.html (privacidad ES)
 - 📜 https://jairist.github.io/tantea-legal/privacy-en.html (privacidad EN)
 - 📜 https://jairist.github.io/tantea-legal/terms.html (términos)
+- 🗑️ https://jairist.github.io/tantea-legal/eliminar-cuenta.html (eliminación de cuenta — URL requerida por Google Play en Seguridad de los datos)
 
 ## Cómo actualizar
 
